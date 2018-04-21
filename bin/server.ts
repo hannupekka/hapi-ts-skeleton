@@ -12,7 +12,7 @@ import routes from './routes';
 /**
  * Creates server.
  */
-const createServer = async (): Promise<Hapi.Server> => {
+export const createServer = async (): Promise<Hapi.Server> => {
   const server = new Hapi.Server({
     host: config.HOST,
     port: config.PORT,

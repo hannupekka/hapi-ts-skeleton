@@ -11,9 +11,9 @@ if (!_.includes(['development', 'production', 'test'], config.NODE_ENV)) {
 }
 
 const REQUIRED_VARIABLES: IEnvs = {
-  development: ['NODE_ENV', 'PORT', 'REQUIRE_HTTPS', 'API_VERSION'],
+  development: ['NODE_ENV', 'PORT', 'API_VERSION'],
   production: [],
-  test: [],
+  test: ['NODE_ENV', 'API_VERSION'],
 };
 
 // Forbid certain variables in development or testing, just in case.
@@ -24,6 +24,7 @@ const FORBIDDEN_VARIABLES: IEnvs = {
 };
 
 export const isProduction = config.NODE_ENV === 'production';
+export const isTest = config.NODE_ENV === 'test';
 
 // Makes sure that each required environment variable is set and forbiddens are not.
 export const checkEnv = () => {
