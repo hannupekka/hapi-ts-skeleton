@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "ban": "ban",
-    "build-ts": "tsc",
-    "dev":
-      "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "build": "tsc",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
     "lint": "tslint --project .",
     "prepush": "npm run lint && npm run ban && npm run test",
+    "start": "node --max_old_space_size=500 dist/bin/index.js",
     "test": "NODE_ENV=test jest",
     "watch-node": "nodemon dist/bin/index.js",
     "watch-ts": "tsc -w"
@@ -26,6 +26,7 @@
     "inert": "^5.1.0",
     "joi": "^13.2.0",
     "lodash": "^4.17.5",
+    "typescript": "^2.8.3",
     "vision": "^5.3.2",
     "winston": "^2.4.2"
   },
@@ -44,8 +45,7 @@
     "jest": "^22.4.3",
     "nodemon": "^1.17.3",
     "ts-jest": "^22.4.4",
-    "tslint": "^5.9.1",
-    "typescript": "^2.8.3"
+    "tslint": "^5.9.1"
   },
   "engines": {
     "yarn": "^1.6.0",
@@ -56,7 +56,10 @@
       "^.+\\.ts$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
-    "moduleFileExtensions": ["ts", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
     "setupTestFrameworkScriptFile": "./tools/jest/setup.ts"
   }
 }
