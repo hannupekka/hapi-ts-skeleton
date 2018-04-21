@@ -6,12 +6,13 @@
   "scripts": {
     "ban": "ban",
     "build": "tsc",
-    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "dev":
+      "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
     "lint": "tslint --project .",
     "prepush": "npm run lint && npm run ban && npm run test",
     "start": "node --max_old_space_size=500 dist/bin/index.js",
     "test": "NODE_ENV=test jest",
-    "watch-node": "nodemon dist/bin/index.js",
+    "watch-node": "nodemon --inspect dist/bin/index.js",
     "watch-ts": "tsc -w"
   },
   "author": "Hannu-Pekka Heinäjärvi <hannupekka@gmail.com>",
@@ -56,10 +57,7 @@
       "^.+\\.ts$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.ts$",
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
+    "moduleFileExtensions": ["ts", "js"],
     "setupTestFrameworkScriptFile": "./tools/jest/setup.ts"
   }
 }
