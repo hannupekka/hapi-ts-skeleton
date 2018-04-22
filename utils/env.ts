@@ -11,16 +11,16 @@ if (!_.includes(['development', 'production', 'test'], config.NODE_ENV)) {
 }
 
 const REQUIRED_VARIABLES: IEnvs = {
-  development: ['NODE_ENV', 'PORT', 'API_VERSION'],
-  production: [],
-  test: ['NODE_ENV', 'API_VERSION'],
+  development: ['API_VERSION', 'DB_NAME', 'DB_PASS', 'DB_USER', 'NODE_ENV', 'PORT'],
+  production: ['API_VERSION', 'DB_URL', 'NODE_ENV', 'PORT', 'REQUIRE_HTTPS'],
+  test: [],
 };
 
 // Forbid certain variables in development or testing, just in case.
 const FORBIDDEN_VARIABLES: IEnvs = {
-  development: [],
+  development: ['DB_URL'],
   production: [],
-  test: [],
+  test: ['DB_URL'],
 };
 
 export const isProduction = config.NODE_ENV === 'production';

@@ -1,7 +1,7 @@
 import * as Hapi from 'hapi';
 import config from '../config';
-import * as helloHttp from '../src/http/hello-http';
-import { name } from '../validation';
+import * as exampleHttp from '../src/http/example-http';
+import * as validation from '../validation';
 import * as schemas from '../schemas/response';
 import logger from '../utils/logger';
 import { isProduction } from '../utils/env';
@@ -29,7 +29,7 @@ const defaultRouteOptions = {
 
 const routes = [
   {
-    handler: helloHttp.helloWorld,
+    handler: exampleHttp.helloWorld,
     method: 'GET',
     options: {
       description: 'Hello world!',
@@ -40,7 +40,7 @@ const routes = [
     path: createPath('/hello', config.API_VERSION),
   },
   {
-    handler: helloHttp.helloName,
+    handler: exampleHttp.helloName,
     method: 'GET',
     options: {
       description: 'Hello you!',
@@ -49,14 +49,14 @@ const routes = [
       tags: ['hello'],
       validate: {
         params: {
-          name,
+          name: validation.name,
         },
       },
     },
     path: createPath('/hello/{name}', config.API_VERSION),
   },
   {
-    handler: helloHttp.error,
+    handler: exampleHttp.error,
     method: 'GET',
     options: {
       description: 'Example error',
@@ -65,6 +65,31 @@ const routes = [
       tags: ['error'],
     },
     path: createPath('/error', config.API_VERSION),
+  },
+  {
+    handler: exampleHttp.getUsers,
+    method: 'GET',
+    options: {
+      description: 'List all users',
+      notes: 'Replies with list of users',
+      response: { schema: schemas.getUsers },
+      tags: ['users'],
+    },
+    path: createPath('/users', config.API_VERSION),
+  },
+  {
+    handler: exampleHttp.postUser,
+    method: 'POST',
+    options: {
+      description: 'Add new user',
+      notes: 'Adds new user and returns it',
+      response: { schema: schemas.postUser },
+      tags: ['users'],
+      validate: {
+        payload: validation.postUser,
+      },
+    },
+    path: createPath('/users', config.API_VERSION),
   },
 ];
 

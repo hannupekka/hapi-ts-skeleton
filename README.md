@@ -2,8 +2,15 @@
 
 Project skeleton for hapi & Typescript apps.
 
+## Requirements
+
+* Docker v18.03.0 or higher (for local development)
+* Compose 1.20.1 or higher (for local development)
+* Node 9.0.0 or higher
+
 ## Development
 
+1.  Run `yarn` to install dependencies.
 1.  Copy `env-sample` as `.env` and fill in the blanks.
 1.  Run `source .env` to read env variables.
 1.  Run `yarn dev` to start development server.

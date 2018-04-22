@@ -6,13 +6,16 @@
   "scripts": {
     "ban": "ban",
     "build": "tsc",
-    "dev":
+    "dev": "docker-compose up web postgres",
+    "dev:server":
       "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
     "lint": "tslint --project .",
     "prepush": "npm run lint && npm run ban && npm run test",
     "start": "node --max_old_space_size=500 dist/bin/index.js",
-    "test": "NODE_ENV=test jest",
-    "watch-node": "nodemon --inspect dist/bin/index.js",
+    "pretest": "docker-compose up -d test",
+    "test": "NODE_ENV=test jest --forceExit || true",
+    "posttest": "docker-compose stop test",
+    "watch-node": "nodemon dist/bin/index.js",
     "watch-ts": "tsc -w"
   },
   "author": "Hannu-Pekka Heinäjärvi <hannupekka@gmail.com>",
@@ -26,7 +29,9 @@
     "hapi-swagger": "^9.1.1",
     "inert": "^5.1.0",
     "joi": "^13.2.0",
+    "knex": "^0.14.6",
     "lodash": "^4.17.5",
+    "pg": "^7.4.1",
     "typescript": "^2.8.3",
     "vision": "^5.3.2",
     "winston": "^2.4.2"
@@ -37,6 +42,7 @@
     "@types/inert": "^5.1.0",
     "@types/jest": "^22.2.3",
     "@types/joi": "^13.0.7",
+    "@types/knex": "^0.14.12",
     "@types/lodash": "^4.14.107",
     "@types/vision": "^5.3.2",
     "@types/winston": "^2.3.9",
@@ -46,6 +52,7 @@
     "jest": "^22.4.3",
     "nodemon": "^1.17.3",
     "ts-jest": "^22.4.4",
+    "ts-node": "^6.0.0",
     "tslint": "^5.9.1"
   },
   "engines": {

@@ -23,3 +23,31 @@ export const error = Joi.object({
     .required()
     .example(501),
 });
+
+export const getUsers = Joi.array().items(
+  Joi.object({
+    age: Joi.number()
+      .integer()
+      .required()
+      .example(30),
+    id: Joi.string()
+      .required()
+      .example('1'),
+    name: Joi.string()
+      .required()
+      .example('Bob'),
+  })
+);
+
+export const postUser = Joi.object({
+  age: Joi.number()
+    .integer()
+    .required()
+    .example(30),
+  id: Joi.string()
+    .required()
+    .example('1'),
+  name: Joi.string()
+    .required()
+    .example('Bob'),
+});

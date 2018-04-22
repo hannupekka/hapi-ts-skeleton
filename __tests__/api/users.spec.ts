@@ -1,28 +1,26 @@
 import { Server } from 'hapi';
 import { createServer } from '../../bin/server';
 import config from '../../config';
+import { reset } from '../../db/utils';
 
-describe('Error', () => {
+describe('Hello', () => {
   let server: Server;
 
   beforeAll(async () => {
+    await reset();
     server = await createServer();
     return server.initialize();
   });
 
-  describe('GET /error', () => {
-    it('should reply with correct error', async () => {
+  describe('GET /users', () => {
+    it('should reply with list of users', async () => {
       const { statusCode, result } = await server.inject({
         method: 'GET',
-        url: `/v${config.API_VERSION}/error`,
+        url: `/v${config.API_VERSION}/users`,
       });
 
-      expect(statusCode).toBe(501);
-      expect(result).toEqual({
-        error: 'Not Implemented',
-        message: 'Not Implemented',
-        statusCode: 501,
-      });
+      expect(statusCode).toBe(200);
+      expect(result).toEqual([]);
     });
   });
 });

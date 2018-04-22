@@ -1,0 +1,33 @@
+version: '3.6'
+
+services:
+  web:
+    build: .
+    command: 'bash -c ''source .env && npm run dev:server'''
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '${PORT}:${PORT}'
+    links:
+      - postgres
+
+  postgres:
+    image: postgres:10.3
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}_${NODE_ENV}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  test:
+    image: postgres:10.3
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test
+    ports:
+      - '5000:5432'
+
+volumes:
+  pgdata: {}

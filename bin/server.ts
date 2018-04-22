@@ -14,7 +14,7 @@ import routes from './routes';
  */
 export const createServer = async (): Promise<Hapi.Server> => {
   const server = new Hapi.Server({
-    host: config.HOST,
+    host: '0.0.0.0',
     port: config.PORT,
   });
 
