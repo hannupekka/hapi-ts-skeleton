@@ -36,4 +36,4 @@ const knexConfig: IKnexConfig = {
   },
 };
 
-export default knexConfig;
+module.exports = knexConfig;

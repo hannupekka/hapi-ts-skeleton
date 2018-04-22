@@ -1,5 +1,6 @@
 import * as knex from 'knex';
-import knexfile from '../knexfile';
 import config from '../config';
+
+const knexfile = require('../knexfile');
 
 export default knex(knexfile[config.NODE_ENV]);
