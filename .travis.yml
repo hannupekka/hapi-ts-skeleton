@@ -1,5 +1,12 @@
 language: node_js
 
+node_js:
+  - "9.0.0"
+
+sudo: required
+services:
+  - docker
+
 env:
   - DOCKER_COMPOSE_VERSION=1.20.1
   - NODE_VERSION=9
