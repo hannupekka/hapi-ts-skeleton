@@ -6,8 +6,9 @@
   "scripts": {
     "ban": "ban",
     "build": "tsc",
-    "dev": "source .env && docker-compose up web postgres",
-    "dev:server":
+    "dev:start": "docker-compose up -d postgres",
+    "dev:stop": "docker-compose stop postgres",
+    "dev":
       "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
     "lint": "tslint --project .",
     "prepush": "npm run lint && npm run ban && npm run test",

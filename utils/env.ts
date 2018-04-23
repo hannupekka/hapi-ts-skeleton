@@ -11,8 +11,8 @@ if (!_.includes(['development', 'production', 'test'], config.NODE_ENV)) {
 }
 
 const REQUIRED_VARIABLES: IEnvs = {
-  development: ['API_VERSION', 'DB_NAME', 'DB_PASS', 'DB_USER', 'NODE_ENV', 'PORT'],
-  production: ['API_VERSION', 'DB_URL', 'NODE_ENV', 'PORT', 'REQUIRE_HTTPS'],
+  development: ['API_VERSION', 'PORT'],
+  production: ['API_VERSION', 'DB_URL', 'PORT', 'REQUIRE_HTTPS'],
   test: [],
 };
 

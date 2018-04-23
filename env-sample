@@ -1,7 +1,4 @@
 export API_VERSION=1
-export DB_NAME=hapi-ts-skeleton
-export DB_PASS=postgres
-export DB_USER=postgres
 export NODE_ENV=development
 export PORT=8000
 export REQUIRE_HTTPS=false

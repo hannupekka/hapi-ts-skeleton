@@ -13,6 +13,7 @@ Project skeleton for hapi & Typescript apps.
 1.  Run `yarn` to install dependencies.
 1.  Copy `env-sample` as `.env` and fill in the blanks.
 1.  Run `source .env` to read env variables.
+1.  Run `yarn dev:start` to start Postgres server in Docker (`yarn dev:stop` to shut it down).
 1.  Run `yarn dev` to start development server.
 
 ## Production
