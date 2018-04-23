@@ -14,11 +14,11 @@ export const helloName = async (name: string) => {
 };
 
 export const getUsers = async () => {
-  return await knex('user').select('*');
+  return await knex('users').select('*');
 };
 
 export const postUser = async ({ name, age }: { name: string; age: number }) => {
-  const result = await knex('user')
+  const result = await knex('users')
     .insert({ name, age })
     .returning('*');
 

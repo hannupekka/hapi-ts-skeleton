@@ -1,7 +1,7 @@
 import * as Knex from 'knex';
 
 exports.up = async (knex: Knex) => {
-  await knex.schema.createTable('user', table => {
+  await knex.schema.createTable('users', table => {
     table
       .bigIncrements('id')
       .primary()
@@ -12,5 +12,5 @@ exports.up = async (knex: Knex) => {
 };
 
 exports.down = async (knex: Knex) => {
-  await knex.schema.dropTable('user');
+  await knex.schema.dropTable('users');
 };
