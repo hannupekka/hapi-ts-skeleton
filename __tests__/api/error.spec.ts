@@ -5,7 +5,7 @@ import config from '../../config';
 describe('Error', () => {
   let server: Server;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     server = await createServer();
     return server.initialize();
   });

@@ -1,4 +1,4 @@
-export NODE_ENV=
-export PORT=
-export REQUIRE_HTTPS=
-export API_VERSION=
+export API_VERSION=1
+export NODE_ENV=development
+export PORT=8000
+export REQUIRE_HTTPS=false

@@ -1,0 +1,25 @@
+version: '3.6'
+
+services:
+  postgres:
+    image: postgres:10.3
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=development
+    ports:
+      - '4321:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  test:
+    image: postgres:10.3
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test
+    ports:
+      - '4322:5432'
+
+volumes:
+  pgdata: {}

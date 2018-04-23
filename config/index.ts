@@ -1,5 +1,11 @@
-const { NODE_ENV, HOST, PORT, REQUIRE_HTTPS, API_VERSION } = process.env;
+const { API_VERSION, DB_URL, NODE_ENV, PORT, REQUIRE_HTTPS } = process.env;
 
-const config = { HOST: HOST || 'localhost', NODE_ENV, PORT, REQUIRE_HTTPS, API_VERSION };
+const config = {
+  API_VERSION,
+  DB_URL,
+  NODE_ENV,
+  PORT,
+  REQUIRE_HTTPS,
+};
 
 export default config;
