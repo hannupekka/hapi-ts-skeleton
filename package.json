@@ -14,7 +14,7 @@
     "prepush": "npm run lint && npm run ban && npm run test",
     "start": "node --max_old_space_size=500 dist/bin/index.js",
     "pretest": "docker-compose up -d test",
-    "test": "NODE_ENV=test jest --forceExit || true",
+    "test": "NODE_ENV=test jest --forceExit || (npm run posttest && false)",
     "posttest": "docker-compose stop test"
   },
   "author": "Hannu-Pekka Heinäjärvi <hannupekka@gmail.com>",
